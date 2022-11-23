@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
+[ext_resource path="res://EnemyManager.gd" type="Script" id=2]
+[ext_resource path="res://pushbox.gd" type="Script" id=3]
+[ext_resource path="res://Score.gd" type="Script" id=4]
+[ext_resource path="res://Player1.png" type="Texture" id=5]
+[ext_resource path="res://AudioManager.gd" type="Script" id=6]
+[ext_resource path="res://breakdown_thrash.wav" type="AudioStream" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14, 25.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 22, 27 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 508.969, 369.25 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_levels/7 = true
+glow_blend_mode = 1
+glow_hdr_luminance_cap = 118.06
+glow_bicubic_upscale = true
+glow_high_quality = true
+
+[node name="World" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -236.0
+margin_top = -105.0
+margin_right = -196.0
+margin_bottom = -65.0
+rect_scale = Vector2( 37.918, 21.6983 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="PlayerPunk" type="KinematicBody2D" parent="."]
+position = Vector2( 499, 453 )
+rotation = 4.71239
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPunk"]
+position = Vector2( 2, 5.5 )
+shape = SubResource( 1 )
+
+[node name="PunkSprite" type="Sprite" parent="PlayerPunk"]
+position = Vector2( 6, 13 )
+scale = Vector2( 3, 3 )
+z_index = 1
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="PushBox" type="Area2D" parent="PlayerPunk"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPunk/PushBox"]
+position = Vector2( 33, 5 )
+shape = SubResource( 2 )
+
+[node name="PushCooldown" type="Timer" parent="PlayerPunk"]
+wait_time = 0.4
+one_shot = true
+
+[node name="PushAnimationCooldown" type="Timer" parent="PlayerPunk"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( -447, 358 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 1492, 340 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 523, -240 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 531, 931 )
+shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+script = ExtResource( 6 )
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="Score" type="RichTextLabel" parent="."]
+margin_left = 869.0
+margin_top = 17.0
+margin_right = 982.0
+margin_bottom = 57.0
+text = "Score : 0"
+script = ExtResource( 4 )
