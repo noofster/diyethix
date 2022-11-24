@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="diyethix"
-run/main_scene="res://pit.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
 [gui]

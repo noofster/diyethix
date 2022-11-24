@@ -27,7 +27,7 @@ func die():
 	_particle.rotation = global_rotation
 	_particle.emitting = true
 	explosionSound.play()
-	collider.disabled = true  
+	collider.queue_free()
 	emit_signal("enemy_death")
 	hide()
 	get_tree().current_scene.add_child(_particle)
