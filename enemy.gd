@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 export var particle : PackedScene
+export var point : PackedScene
 onready var explosionSound = $ExplosionSound
 signal enemy_death
 # Declare member variables here. Examples:
@@ -8,7 +9,6 @@ signal enemy_death
 # var b = "text"
 onready var collider = get_node("CollisionShape2D");
 func _ready():
-	print("working")
 	contact_monitor = true
 	contacts_reported = 1 
 	connect("body_entered", self, "_on_bounds_enter")

@@ -8,15 +8,15 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("area_entered",self,"_area_entered")
-	connect("area_exited",self,"_area_exited")
+	connect("body_entered",self,"_body_entered")
+	connect("body_exited",self,"_body_exited")
 	pass # Replace with function body.
 
-func _area_entered(area):
-	area.get_parent().set_can_start()
+func _body_entered(body):
+	body.set_can_start()
 	get_parent().frame=0
-func _area_exited(area):
-	area.get_parent().set_can_start()
+func _body_exited(body):
+	body.set_can_start()
 	get_parent().frame=1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

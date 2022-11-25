@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://pushbox.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://trash_transition.wav" type="AudioStream" id=9]
 [ext_resource path="res://AudioManager.gd" type="Script" id=10]
 [ext_resource path="res://thrasherintro.wav" type="AudioStream" id=11]
+[ext_resource path="res://LongShot-Gp2m.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 14, 25.5 )
@@ -65,6 +66,14 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 63, 39.5 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 48
+extra_spacing_space = 4
+font_data = ExtResource( 12 )
+
+[sub_resource type="Theme" id=20]
+default_font = SubResource( 19 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -126,7 +135,7 @@ one_shot = true
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( -447, 358 )
+position = Vector2( -440, 358 )
 shape = SubResource( 16 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
@@ -146,6 +155,7 @@ position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "drummer"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -153,6 +163,7 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "bass"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -160,11 +171,10 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "guitar"
-frame = 1
 playing = true
 
 [node name="StartButton" type="Sprite" parent="."]
-position = Vector2( 502, 366 )
+position = Vector2( 512, 368 )
 texture = ExtResource( 7 )
 hframes = 2
 frame = 1
@@ -184,8 +194,20 @@ script = ExtResource( 10 )
 stream = ExtResource( 9 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 97.0
-margin_top = 215.0
-margin_right = 312.0
-margin_bottom = 266.0
-text = "WASD to move"
+margin_left = 152.0
+margin_top = 192.0
+margin_right = 447.0
+margin_bottom = 292.0
+theme = SubResource( 20 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+bbcode_text = "WASD TO MOVE"
+text = "WASD TO MOVE"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 656.0
+margin_top = 192.0
+margin_right = 951.0
+margin_bottom = 292.0
+theme = SubResource( 20 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+text = "CLICK TO PUSH"

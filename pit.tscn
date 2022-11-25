@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://EnemyManager.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Drummer.png" type="Texture" id=8]
 [ext_resource path="res://Bassguy .png" type="Texture" id=9]
 [ext_resource path="res://Guitarguy .png" type="Texture" id=10]
+[ext_resource path="res://GameTimer.gd" type="Script" id=11]
+[ext_resource path="res://LongShot-Gp2m.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 14, 25.5 )
@@ -32,6 +34,13 @@ glow_blend_mode = 1
 glow_hdr_luminance_cap = 118.06
 glow_bicubic_upscale = true
 glow_high_quality = true
+
+[sub_resource type="DynamicFont" id=17]
+size = 39
+font_data = ExtResource( 12 )
+
+[sub_resource type="Theme" id=18]
+default_font = SubResource( 17 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 9 )
@@ -57,7 +66,7 @@ region = Rect2( 0, 0, 32, 32 )
 atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
@@ -161,31 +170,39 @@ script = ExtResource( 2 )
 environment = SubResource( 6 )
 
 [node name="Score" type="RichTextLabel" parent="."]
-margin_left = 869.0
-margin_top = 17.0
-margin_right = 982.0
-margin_bottom = 57.0
+margin_left = 782.0
+margin_top = 14.0
+margin_right = 947.0
+margin_bottom = 67.0
+theme = SubResource( 18 )
 text = "Score : 0"
 script = ExtResource( 4 )
 
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+script = ExtResource( 11 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 505, 64 )
+position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 9 )
+frames = SubResource( 16 )
 animation = "drummer"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( 287, 82 )
+position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 9 )
+frames = SubResource( 16 )
 animation = "bass"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
-position = Vector2( 691, 79 )
+position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 9 )
+frames = SubResource( 16 )
 animation = "guitar"
-frame = 1
 playing = true

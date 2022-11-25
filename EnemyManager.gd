@@ -7,13 +7,18 @@ extends Node
 
 var enemy = preload ("res://enemy.tscn")
 signal enemy_death
+var circle_mob_leader = preload("res://CircleEnemy.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var leader = circle_mob_leader.instance()
+	add_child(leader)
+	leader.position = Vector2(500,500)
 	for n in 100:
 		var e = enemy.instance()
+		#e.position =  (Vector2(512,200))
 		e.connect("enemy_death", self, "_enemy_death")
-		add_child(e)
-		print(n)
+		#add_child(e)
+
 	pass # Replace with function body.
 
 func _enemy_death():
