@@ -24,6 +24,9 @@ func _process(delta):
 	if pushCooldown.is_stopped():
 		if Input.is_action_just_pressed("push") && enabled:
 			if(can_start):
+				var timer_parent = get_parent().get_node("TimerNode2D")
+				timer_parent.get_child(1).visible = true
+				timer_parent.get_child(0).start()
 				introsound.stop()
 				transitionsound.play()
 				enabled = false

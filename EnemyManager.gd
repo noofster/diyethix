@@ -12,12 +12,18 @@ var circle_mob_leader = preload("res://CircleEnemy.tscn")
 func _ready():
 	var leader = circle_mob_leader.instance()
 	add_child(leader)
-	leader.position = Vector2(500,500)
-	for n in 100:
+	#leader.position = Vector2(500,500)
+	for n in 150:
 		var e = enemy.instance()
+		if(n%4==0):
+			e.gravity_scale = -1
+		elif (n%3==0):
+			e.gravity_scale =1
+		else:
+			e.leader = leader.get_node("Sprite")
 		#e.position =  (Vector2(512,200))
 		e.connect("enemy_death", self, "_enemy_death")
-		#add_child(e)
+		add_child(e)
 
 	pass # Replace with function body.
 

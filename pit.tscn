@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://EnemyManager.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Guitarguy .png" type="Texture" id=10]
 [ext_resource path="res://GameTimer.gd" type="Script" id=11]
 [ext_resource path="res://LongShot-Gp2m.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://SecondTimer.gd" type="Script" id=13]
+[ext_resource path="res://newtheme.tres" type="Theme" id=14]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 14, 25.5 )
@@ -36,7 +38,7 @@ glow_bicubic_upscale = true
 glow_high_quality = true
 
 [sub_resource type="DynamicFont" id=17]
-size = 39
+size = 52
 font_data = ExtResource( 12 )
 
 [sub_resource type="Theme" id=18]
@@ -170,10 +172,10 @@ script = ExtResource( 2 )
 environment = SubResource( 6 )
 
 [node name="Score" type="RichTextLabel" parent="."]
-margin_left = 782.0
-margin_top = 14.0
-margin_right = 947.0
-margin_bottom = 67.0
+margin_left = 721.0
+margin_top = 12.0
+margin_right = 1000.0
+margin_bottom = 89.0
 theme = SubResource( 18 )
 text = "Score : 0"
 script = ExtResource( 4 )
@@ -189,7 +191,6 @@ position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "drummer"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -197,7 +198,6 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "bass"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -205,4 +205,18 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "guitar"
+frame = 1
 playing = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 13 )
+secondsleft = 20
+
+[node name="SecondsTimer" type="RichTextLabel" parent="Timer"]
+margin_left = 37.0
+margin_top = 11.0
+margin_right = 193.0
+margin_bottom = 142.0
+theme = ExtResource( 14 )
+text = "Time 20"

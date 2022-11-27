@@ -2,6 +2,7 @@ extends RigidBody2D
 
 export var particle : PackedScene
 export var point : PackedScene
+var leader;
 onready var explosionSound = $ExplosionSound
 signal enemy_death
 # Declare member variables here. Examples:
@@ -18,6 +19,12 @@ func _ready():
 func _on_bounds_enter(body):
 	if (body.get_name() == "Bounds" && linear_velocity.length() > 750):
 		die()
+func _physics_process(delta):
+	if(leader != null):
+		look_at(leader.get_global_position())
+		linear_velocity += Vector2(8,0).rotated(rotation)
+
+
 
 		
 			

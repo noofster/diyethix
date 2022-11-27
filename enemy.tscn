@@ -22,10 +22,11 @@ animations = [ {
 } ]
 
 [node name="Enemy" type="RigidBody2D"]
-position = Vector2( 501, 160 )
+position = Vector2( 495, 512 )
 rotation = 4.71239
 physics_material_override = SubResource( 4 )
-gravity_scale = -1.0
+gravity_scale = 0.0
+can_sleep = false
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -231.0 ]
