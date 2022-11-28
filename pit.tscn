@@ -180,6 +180,9 @@ theme = SubResource( 18 )
 text = "Score : 0"
 script = ExtResource( 4 )
 
+[node name="Timer" type="Timer" parent="Score"]
+one_shot = true
+
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true

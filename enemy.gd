@@ -35,7 +35,10 @@ func die():
 	_particle.emitting = true
 	explosionSound.play()
 	collider.queue_free()
-	emit_signal("enemy_death")
+	var p = point.instance()
+	get_tree().current_scene.add_child(p)
+	p.global_position = global_position
+	emit_signal("enemy_death",p)
 	hide()
 	get_tree().current_scene.add_child(_particle)
 	yield($ExplosionSound, "finished")

@@ -38,11 +38,7 @@ func _process(delta):
 			pushCooldown.start()
 	if pushAnimationCooldown.is_stopped():
 		sprite.frame = 0
-	
 
-		
-		
-		
 func _physics_process(delta):
 	if(!enabled):
 		return

@@ -5,7 +5,7 @@
 [ext_resource path="res://explosion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ExplosionSound.gd" type="Script" id=4]
 [ext_resource path="res://explosion.wav" type="AudioStream" id=5]
-[ext_resource path="res://points.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pointscore.tscn" type="PackedScene" id=6]
 
 [sub_resource type="PhysicsMaterial" id=4]
 bounce = 0.38

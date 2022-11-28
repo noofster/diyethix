@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://pushbox.gd" type="Script" id=2]
@@ -76,6 +76,13 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="Theme" id=20]
 default_font = SubResource( 19 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 47
+font_data = ExtResource( 12 )
+
+[sub_resource type="Theme" id=22]
+default_font = SubResource( 21 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -173,6 +180,7 @@ position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "drummer"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -180,6 +188,7 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "bass"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -187,7 +196,6 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "guitar"
-frame = 1
 playing = true
 
 [node name="StartButton" type="Sprite" parent="."]
@@ -228,3 +236,12 @@ margin_bottom = 292.0
 theme = SubResource( 20 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 text = "CLICK TO PUSH"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = 210.0
+margin_top = 248.0
+margin_right = 806.0
+margin_bottom = 440.0
+theme = SubResource( 22 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+text = "PUSH PEOPLE OUT OF THE PIT FOR POINTS"
