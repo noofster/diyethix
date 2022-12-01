@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-onready var dir = Vector2(rand_range(-2,1),-1.0)
+onready var dir = Vector2(rand_range(-1,1),-1.0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("Grow")

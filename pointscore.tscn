@@ -18,8 +18,10 @@ z_index = 21
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-margin_right = 363.0
-margin_bottom = 167.0
+margin_left = -46.0881
+margin_top = -46.0881
+margin_right = 316.912
+margin_bottom = 120.912
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource( 2 )
