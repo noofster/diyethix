@@ -182,7 +182,6 @@ position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "drummer"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -190,7 +189,6 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "bass"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -198,6 +196,7 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "guitar"
+frame = 1
 playing = true
 
 [node name="StartButton" type="Sprite" parent="."]
@@ -250,6 +249,8 @@ text = "PUSH PEOPLE OUT OF THE PIT FOR POINTS"
 
 [node name="swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -0.842
 
 [node name="hitsound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
+volume_db = -0.934
