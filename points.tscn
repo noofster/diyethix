@@ -41,10 +41,10 @@ default_font = SubResource( 2 )
 anims/Points = SubResource( 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 3.0
-margin_top = -78.0
-margin_right = 43.0
-margin_bottom = -38.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 42.0
+margin_bottom = 42.0
 theme = SubResource( 3 )
-custom_colors/default_color = Color( 1, 0, 0, 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "100"
