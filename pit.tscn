@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://EnemyManager.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://LongShot-Gp2m.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://SecondTimer.gd" type="Script" id=13]
 [ext_resource path="res://newtheme.tres" type="Theme" id=14]
+[ext_resource path="res://slash-21834.mp3" type="AudioStream" id=15]
+[ext_resource path="res://hitsound.wav" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 14, 25.5 )
@@ -22,7 +24,7 @@ extents = Vector2( 14, 25.5 )
 extents = Vector2( 22, 27 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 508.969, 396.125 )
+extents = Vector2( 508.969, 424.063 )
 
 [sub_resource type="Environment" id=6]
 background_mode = 4
@@ -154,11 +156,11 @@ position = Vector2( 1492, 340 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 523, -213.125 )
+position = Vector2( 509, -244 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 534, 981 )
+position = Vector2( 506, 953 )
 shape = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -194,6 +196,7 @@ position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "drummer"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -201,6 +204,7 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "bass"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -208,7 +212,6 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "guitar"
-frame = 1
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -223,3 +226,12 @@ margin_right = 193.0
 margin_bottom = 142.0
 theme = ExtResource( 14 )
 text = "Time 20"
+
+[node name="swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = 0.5
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -0.5
+pitch_scale = 0.93

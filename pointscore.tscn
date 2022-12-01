@@ -14,7 +14,6 @@ default_font = SubResource( 1 )
 
 [node name="Node2D" type="Node2D"]
 modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 1.5, 1.5 )
 z_index = 21
 script = ExtResource( 3 )
 
