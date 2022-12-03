@@ -3,18 +3,24 @@ extends RichTextLabel
 var score = 0 
 var EnemyManager;
 onready var timer = $Timer
+onready var gametimer = $"../GameTimer"
 var killstreak = 0
-
+onready var animationplayer = $AnimationPlayer
 
 func _ready():
 	EnemyManager = get_parent().get_node("EnemyManager")
 	EnemyManager.connect("enemy_death", self, "increment_score")
 	timer.connect("timeout", self,"ontimeout")
+	gametimer.connect("timeout", self,"play_animation")
 	pass
 func ontimeout():
 	print(killstreak)
 	killstreak=0
-
+func play_animation():
+	animationplayer.play("Movetocenter")
+	yield(animationplayer, "animation_finished")
+	animationplayer.play("colorchange")
+	
 func increment_score(point):
 	timer.start()
 	if(timer.time_left > 0):

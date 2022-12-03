@@ -20,7 +20,7 @@ func _ready():
 func set_can_start():
 	can_start = !can_start
 
-func _process(delta):
+func _process(_delta):
 	if pushCooldown.is_stopped():
 		if Input.is_action_just_pressed("push") && enabled:
 			if(can_start):
@@ -31,7 +31,7 @@ func _process(delta):
 				transitionsound.play()
 				enabled = false
 				yield(transitionsound, "finished")
-				get_tree().change_scene("res://pit.tscn")
+				var _return = get_tree().change_scene("res://pit.tscn")
 			sprite.frame = 1
 			pushbox.push(rotation)
 			pushAnimationCooldown.start()
@@ -39,7 +39,7 @@ func _process(delta):
 	if pushAnimationCooldown.is_stopped():
 		sprite.frame = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if(!enabled):
 		return
 	var motion = Vector2()
@@ -52,7 +52,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		motion.x -= 1
 	motion = motion.normalized()
-	move_and_slide(motion*speed)
+	var _return = move_and_slide(motion*speed)
 	look_at(get_global_mouse_position())
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

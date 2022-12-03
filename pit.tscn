@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://EnemyManager.gd" type="Script" id=2]
 [ext_resource path="res://pushbox.gd" type="Script" id=3]
 [ext_resource path="res://Score.gd" type="Script" id=4]
 [ext_resource path="res://Player1.png" type="Texture" id=5]
-[ext_resource path="res://AudioManager.gd" type="Script" id=6]
+[ext_resource path="res://thrasherintro.wav" type="AudioStream" id=6]
 [ext_resource path="res://breakdown_thrash.wav" type="AudioStream" id=7]
 [ext_resource path="res://Drummer.png" type="Texture" id=8]
 [ext_resource path="res://Bassguy .png" type="Texture" id=9]
@@ -16,6 +16,11 @@
 [ext_resource path="res://newtheme.tres" type="Theme" id=14]
 [ext_resource path="res://slash-21834.mp3" type="AudioStream" id=15]
 [ext_resource path="res://hitsound.wav" type="AudioStream" id=16]
+[ext_resource path="res://StartButton.tscn" type="PackedScene" id=17]
+[ext_resource path="res://explosion.wav" type="AudioStream" id=18]
+[ext_resource path="res://StartGameCountdown.gd" type="Script" id=19]
+[ext_resource path="res://trash_transition.wav" type="AudioStream" id=20]
+[ext_resource path="res://PittMusicManager.gd" type="Script" id=21]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 14, 25.5 )
@@ -45,6 +50,37 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="Theme" id=18]
 default_font = SubResource( 17 )
+
+[sub_resource type="Animation" id=19]
+resource_name = "Movetocenter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Score:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.366021, 2.54912 ),
+"update": 0,
+"values": [ Vector2( 721, 12 ), Vector2( 410, 200 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "colorchange"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Score:custom_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0.729412, 0, 0.882353, 1 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 9 )
@@ -104,7 +140,7 @@ margin_top = -45.0
 margin_right = -37.0
 margin_bottom = -36.0
 rect_scale = Vector2( 45, 22.583 )
-color = Color( 0.643137, 0, 0, 1 )
+color = Color( 0.25098, 0, 0, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = -34.0
@@ -163,12 +199,11 @@ shape = SubResource( 5 )
 position = Vector2( 506, 953 )
 shape = SubResource( 5 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-script = ExtResource( 6 )
-
 [node name="EnemyManager" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EnemyManager"]
+stream = ExtResource( 18 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
@@ -179,23 +214,31 @@ margin_top = 12.0
 margin_right = 1000.0
 margin_bottom = 89.0
 theme = SubResource( 18 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Score : 0"
 script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="Score"]
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Score"]
+root_node = NodePath("../..")
+anims/Movetocenter = SubResource( 19 )
+anims/colorchange = SubResource( 20 )
+
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
 autostart = true
 script = ExtResource( 11 )
+startbutton = ExtResource( 17 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "drummer"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -203,6 +246,7 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "bass"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -210,7 +254,6 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "guitar"
-frame = 1
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -234,3 +277,31 @@ volume_db = 0.5
 stream = ExtResource( 16 )
 volume_db = -0.5
 pitch_scale = 0.93
+
+[node name="Transition" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="TimerNode2D" type="Node2D" parent="."]
+z_index = 5
+
+[node name="Timer" type="Timer" parent="TimerNode2D"]
+script = ExtResource( 19 )
+secondsleft = 3
+
+[node name="SecondsTimer" type="RichTextLabel" parent="TimerNode2D"]
+visible = false
+margin_left = 501.0
+margin_top = 345.0
+margin_right = 657.0
+margin_bottom = 476.0
+theme = ExtResource( 14 )
+text = "3"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 21 )
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource( 7 )

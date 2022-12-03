@@ -102,7 +102,7 @@ margin_top = -45.0
 margin_right = -37.0
 margin_bottom = -36.0
 rect_scale = Vector2( 45, 22.583 )
-color = Color( 0.643137, 0, 0, 1 )
+color = Color( 0.25098, 0, 0, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = -34.0
@@ -182,6 +182,7 @@ position = Vector2( 512, 64 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "drummer"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -189,6 +190,7 @@ position = Vector2( 256, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "bass"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -196,7 +198,6 @@ position = Vector2( 768, 96 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 17 )
 animation = "guitar"
-frame = 1
 playing = true
 
 [node name="StartButton" type="Sprite" parent="."]
@@ -220,29 +221,29 @@ script = ExtResource( 10 )
 stream = ExtResource( 9 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 152.0
-margin_top = 192.0
-margin_right = 447.0
-margin_bottom = 292.0
+margin_left = 160.0
+margin_top = 450.0
+margin_right = 455.0
+margin_bottom = 550.0
 theme = SubResource( 20 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 bbcode_text = "WASD TO MOVE"
 text = "WASD TO MOVE"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-margin_left = 656.0
-margin_top = 192.0
-margin_right = 951.0
-margin_bottom = 292.0
+margin_left = 660.0
+margin_top = 450.0
+margin_right = 955.0
+margin_bottom = 547.0
 theme = SubResource( 20 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 text = "CLICK TO PUSH"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
-margin_left = 210.0
-margin_top = 248.0
-margin_right = 806.0
-margin_bottom = 440.0
+margin_left = 220.0
+margin_top = 200.0
+margin_right = 816.0
+margin_bottom = 392.0
 theme = SubResource( 22 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 text = "PUSH PEOPLE OUT OF THE PIT FOR POINTS"
