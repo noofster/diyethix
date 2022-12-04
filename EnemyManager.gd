@@ -6,6 +6,7 @@ extends Node
 # var b = "text"
 onready var timer =$"../GameTimer"
 var enemy = preload ("res://enemy.tscn")
+var stopperenemy = preload ("res://StopperEnemy.tscn")
 onready var audioplayer = $AudioStreamPlayer
 signal enemy_death
 var circle_mob_leader = preload("res://CircleEnemy.tscn")
@@ -21,7 +22,10 @@ func _ready():
 		if(x >= 495 && x <= 505 && y>=270 && y<=296):
 			x = 250
 			y = 350
-		e = enemy.instance()
+		if(n<135):
+			e = enemy.instance()
+		else:
+			e = stopperenemy.instance()
 		if(n == 1):
 			e.connect("endofscene",self, "playexplosion")
 		e.global_position = Vector2(x,y)
@@ -30,7 +34,8 @@ func _ready():
 		elif (n%3==0):
 			e.gravity_scale =1
 		else:
-			e.leader = leader.get_node("Sprite")
+			if(e.name == "Enemy"):
+				e.leader = leader.get_node("Sprite")
 		#e.position =  (Vector2(512,200))
 		e.connect("enemy_death", self, "_enemy_death")
 		timer.connect("timeout", e, "free_from_scene")

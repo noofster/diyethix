@@ -8,6 +8,7 @@ var dead = false;
 onready var explosionSound = $ExplosionSound
 signal enemy_death
 signal endofscene
+var speed = 8
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -23,11 +24,12 @@ func _on_bounds_enter(body):
 	if (body.get_name() == "Bounds" && linear_velocity.length() > 750):
 		die(false)
 func _physics_process(delta):
+	movement()
+
+func movement():
 	if(leader != null):
 		look_at(leader.get_global_position())
-		linear_velocity += Vector2(8,0).rotated(rotation)
-
-
+		linear_velocity += Vector2(speed,0).rotated(rotation)
 var exploding =false;
 func explode():
 	#collider.queue_free()

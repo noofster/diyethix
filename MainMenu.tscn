@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://PlayerPunk.gd" type="Script" id=1]
 [ext_resource path="res://pushbox.gd" type="Script" id=2]
@@ -22,6 +22,9 @@ extents = Vector2( 14, 25.5 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 22, 27 )
+
+[sub_resource type="CapsuleShape2D" id=23]
+radius = 25.0
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 508.969, 433.563 )
@@ -158,6 +161,11 @@ one_shot = true
 [node name="PushAnimationCooldown" type="Timer" parent="PlayerPunk"]
 wait_time = 0.2
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="PlayerPunk"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPunk/Area2D"]
+shape = SubResource( 23 )
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
